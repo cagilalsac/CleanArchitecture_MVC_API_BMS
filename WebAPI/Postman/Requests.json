@@ -1,0 +1,783 @@
+{
+	"info": {
+		"_postman_id": "fe975b27-85e2-4190-b57c-72bbc734cbef",
+		"name": "09_02_CA_CQRS_API_BMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3243845",
+		"_collection_link": "https://interstellar-meadow-62930.postman.co/workspace/MyLectures~8d561e3d-132c-47b3-93e9-b29551bb421a/collection/3243845-fe975b27-85e2-4190-b57c-72bbc734cbef?action=share&source=collection_link&creator=3243845"
+	},
+	"item": [
+		{
+			"name": "SeedDb",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/db/seed",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"db",
+						"seed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresGet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresGetById 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/genres/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresGetById 1000 NotFound",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/genres/1000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPostValid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPostInvalid Null",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPostInvalid Empty",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPostInvalid MinLength",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"t1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPostInvalid MaxLength",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 1 test 1 test 1 test 1 test 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPostInvalid SameName",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPutValidById 4",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\" : \"test 11\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPutInvalidById 1000 NotFound",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1000,\r\n    \"name\" : \"test 111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresPutInvalidById 4 SameName",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\" : \"mystery\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresDeleteById 4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresDeleteById 1 HasRelationalRecords",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenresDeleteById 1000 NotFound",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/genres/1000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"genres",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthorsGet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/authors",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthorsGetById 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/authors/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthorsPostValid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 1\",\r\n    \"surname\": \"test 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/authors",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthorsPutValidById 4",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\" : \"test 11\",\r\n    \"surname\": \"test 22\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/authors",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthorsDeleteById 4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/authors/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authors",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthorsDeleteById 1 HasRelationalRecords",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/authors/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksGet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksGetById 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/books/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksPostValid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 1\",\r\n    \"isbn\": \"1234567890123\",\r\n    \"numberOfPages\": 11,\r\n    \"publishDate\": \"2024-03-10T00:00:00\",\r\n    \"bookTypes\": [\r\n        2,\r\n        4\r\n    ],\r\n    \"price\": 111.1,\r\n    \"isTopSeller\": true,\r\n    \"authorId\": 1,\r\n    \"genreIds\": [\r\n        2, \r\n        3\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksPostInvalid ISBN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"123456789012\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksPostInvalid PageNumber",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": -2,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksPostInvalid PublishDate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-14T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksPostInvalid Price",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 0,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksPutValidById 4",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookTypes\": [\r\n        2\r\n    ],\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BooksDeleteById 4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/books/4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"books",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:7283/api",
+			"type": "string"
+		}
+	]
+}

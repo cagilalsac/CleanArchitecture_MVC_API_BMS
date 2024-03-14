@@ -1,0 +1,107 @@
+﻿@using Domain.Common
+
+@model CreateBookRequest
+@*Generated from Custom Template.*@
+@*Model namespace using directive should be added to _ViewImports.cshtml.*@
+
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+<div class="container">
+    <h4>Book</h4>
+    <hr />
+    <div class="row">
+        <div class="col-12">
+            <form asp-action="Create">
+		        @Html.AntiForgeryToken()
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="row mb-3">
+                    <label asp-for="Name" class="col-2 col-form-label"></label>
+				    <div class="col-6">
+					    <input asp-for="Name" class="form-control" />
+					    <span asp-validation-for="Name" class="text-danger"></span>
+				    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Isbn" class="col-2 col-form-label"></label>
+				    <div class="col-6">
+					    <input asp-for="Isbn" class="form-control" />
+					    <span asp-validation-for="Isbn" class="text-danger"></span>
+				    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="NumberOfPages" class="col-2 col-form-label"></label>
+				    <div class="col-6">
+					    <input asp-for="NumberOfPages" class="form-control" />
+					    <span asp-validation-for="NumberOfPages" class="text-danger"></span>
+				    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="PublishDate" class="col-2 col-form-label"></label>
+				    <div class="col-6">
+					    <input asp-for="PublishDate" class="form-control datetimepicker" type="text" />
+					    <span asp-validation-for="PublishDate" class="text-danger"></span>
+				    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="BookTypes" class="col-2 col-form-label"></label>
+				    <div class="col-6">
+					    <select multiple asp-for="BookTypes" class="form-select">
+							<option value="@((int)BookTypesEnum.Print)">@BookTypesEnum.Print</option>
+							<option value="@((int)BookTypesEnum.Digital)">@BookTypesEnum.Digital</option>
+							<option value="@((int)BookTypesEnum.Audio)">@BookTypesEnum.Audio</option>
+						</select>
+						<span asp-validation-for="BookTypes" class="text-danger"></span>
+				    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="Price" class="col-2 col-form-label"></label>
+				    <div class="col-6">
+					    <input asp-for="Price" class="form-control" />
+					    <span asp-validation-for="Price" class="text-danger"></span>
+				    </div>
+                </div>
+                <div class="row mb-3">
+				    <label asp-for="IsTopSeller" class="col-2 col-form-label"></label>
+				    <div class="col-6 pt-2">
+					    <input class="form-check-input" asp-for="IsTopSeller" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label asp-for="AuthorId" class="col-2 col-form-label"></label>
+				    <div class="col-6">
+					    <select asp-for="AuthorId" class="form-select select2" asp-items="ViewBag.AuthorId">
+						    <option value="0">-- Select --</option>
+					    </select>
+					    <span asp-validation-for="AuthorId" class="text-danger"></span>
+				    </div>
+                </div>
+				<div class="row mb-3">
+					<label asp-for="GenreIds" class="col-2 col-form-label"></label>
+					<div class="col-6">
+						<select multiple asp-for="GenreIds" class="form-select" asp-items="ViewBag.Genres"></select>
+						<span asp-validation-for="GenreIds" class="text-danger"></span>
+					</div>
+				</div>
+                <div class="row mb-3">
+				    <div class="offset-2 col-6">
+					    <input type="submit" value="Save" class="btn btn-primary" />
+					    &nbsp;&nbsp;
+                        <button type="reset" class="btn btn-outline-primary">Reset</button>
+					    &nbsp;&nbsp;
+					    <a asp-action="Index">Back to List</a>
+				    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
