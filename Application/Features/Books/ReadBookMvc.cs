@@ -17,18 +17,18 @@ namespace Application.Features.Books
         public string Name { get; set; }
 
         [DisplayName("ISBN")]
-        public string Isbn { get; set; }
+        public string? Isbn { get; set; }
 
         [DisplayName("Number of Pages")]
         public short? NumberOfPages { get; set; }
 
         [DisplayName("Publish Date")]
-        public string PublishDate { get; set; }
+        public string? PublishDate { get; set; }
 
         [DisplayName("Book Type")]
         public string BookType { get; set; }
 
-        public string Price { get; set; }
+        public string? Price { get; set; }
 
         [DisplayName("Top Seller")]
         public string IsTopSeller { get; set; }

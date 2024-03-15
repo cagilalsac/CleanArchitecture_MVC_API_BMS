@@ -7,6 +7,6 @@ namespace Domain.Entities
         public int Id { get; set; }
         public string Name { get; set; } = null!;
 
-        public List<BookGenre> BookGenres { get; set; }
+        public List<BookGenre>? BookGenres { get; set; }
     }
 }

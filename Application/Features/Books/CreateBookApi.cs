@@ -9,12 +9,12 @@ using MediatR;
 
 namespace Application.Features.Books
 {
-    public record CreateBookRequest(string Name, string Isbn, short? NumberOfPages, DateTime? PublishDate, 
-        List<int> BookTypes, decimal? Price, bool IsTopSeller, int AuthorId, List<int> GenreIds) : IRequest<Response>;
+    public record CreateBookApiRequest(string Name, string? Isbn, short? NumberOfPages, DateTime? PublishDate, 
+        List<int> BookTypes, decimal? Price, bool IsTopSeller, int? AuthorId, List<int> GenreIds) : IRequest<Response>;
 
-    public class CreateBookValidator : AbstractValidator<CreateBookRequest>
+    public class CreateBookApiValidator : AbstractValidator<CreateBookApiRequest>
     {
-        public CreateBookValidator()
+        public CreateBookApiValidator()
         {
             RuleFor(b => b.Name)
                 .NotNull().WithMessage("Name is required!")
@@ -23,7 +23,7 @@ namespace Application.Features.Books
             RuleFor(b => b.Isbn)
                 .Length(13).WithMessage("ISBN must be 13 characters!");
             RuleFor(b => b.NumberOfPages)
-				.GreaterThanOrEqualTo<CreateBookRequest, short>(0).WithMessage("Number Of Pages must be zero or positive!");
+				.GreaterThanOrEqualTo<CreateBookApiRequest, short>(0).WithMessage("Number Of Pages must be zero or positive!");
             RuleFor(b => b.PublishDate)
                 .LessThan(DateTime.Today.AddDays(1)).WithMessage("Publish Date must be before " + DateTime.Today.AddDays(1).ToString("MM.dd.yyyy"));
             RuleFor(b => b.BookTypes)
@@ -31,17 +31,17 @@ namespace Application.Features.Books
             RuleFor(b => b.Price)
                 .GreaterThan(0).WithMessage("Price must be positive!");
             RuleFor(b => b.AuthorId)
-                .NotEqual(0).WithMessage("Author is required!");
-		}
+                .NotNull().WithMessage("Author is required!");
+        }
     }
 
-    public class CreateBookHandler : HandlerBase, IRequestHandler<CreateBookRequest, Response>
+    public class CreateBookApiHandler : HandlerBase, IRequestHandler<CreateBookApiRequest, Response>
     {
-        public CreateBookHandler(IDb db) : base(db)
+        public CreateBookApiHandler(IDb db) : base(db)
         {
         }
 
-        public async Task<Response> Handle(CreateBookRequest request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(CreateBookApiRequest request, CancellationToken cancellationToken)
         {
             if (!string.IsNullOrWhiteSpace(request.Isbn) && _db.Books.Any(b => (b.Isbn ?? string.Empty).ToUpper() == (request.Isbn ?? string.Empty).ToUpper().Trim()))
                 return new ErrorResponse("Book with the same ISBN exists!");
@@ -54,7 +54,7 @@ namespace Application.Features.Books
                 BookType = (BookTypesEnum)request.BookTypes.Sum(),
                 Price = request.Price,
                 IsTopSeller = request.IsTopSeller,
-                AuthorId = request.AuthorId,
+                AuthorId = request.AuthorId.Value,
                 BookGenres = request.GenreIds?.Select(gId => new BookGenre()
                 {
                     GenreId = gId

@@ -14,7 +14,7 @@ namespace Application.Features.Books
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Isbn { get; set; }
+        public string? Isbn { get; set; }
         public short? NumberOfPages { get; set; }
         public DateTime? PublishDate { get; set; }
         public BookTypesEnum BookTypeEnum { get; set; }

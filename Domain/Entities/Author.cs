@@ -8,6 +8,6 @@ namespace Domain.Entities
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;
 
-        public List<Book> Books { get; set; }
+        public List<Book>? Books { get; set; }
     }
 }

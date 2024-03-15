@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books
 {
-    public record UpdateBookRequest(int Id, string Name, string Isbn, short? NumberOfPages, DateTime? PublishDate, 
-        List<int> BookTypes, decimal? Price, bool IsTopSeller, int AuthorId, List<int> GenreIds) : IRequest<Response>;
+    public record UpdateBookRequest(int Id, string Name, string? Isbn, short? NumberOfPages, DateTime? PublishDate, 
+        List<int> BookTypes, decimal? Price, bool IsTopSeller, int? AuthorId, List<int> GenreIds) : IRequest<Response>;
 
     public class UpdateBookValidator : AbstractValidator<UpdateBookRequest>
     {
@@ -32,7 +32,7 @@ namespace Application.Features.Books
 			RuleFor(b => b.Price)
                 .GreaterThan(0).WithMessage("Price must be positive!");
 			RuleFor(b => b.AuthorId)
-				.NotEqual(0).WithMessage("Author is required!");
+				.NotNull().WithMessage("Author is required!");
 		}
     }
 
@@ -60,7 +60,7 @@ namespace Application.Features.Books
             entity.BookType = (BookTypesEnum)request.BookTypes.Sum();
             entity.Price = request.Price;
             entity.IsTopSeller = request.IsTopSeller;
-            entity.AuthorId = request.AuthorId;
+            entity.AuthorId = request.AuthorId.Value;
             entity.BookGenres = request.GenreIds?.Select(gId => new BookGenre()
             {
                 GenreId = gId

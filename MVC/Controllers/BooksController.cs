@@ -74,17 +74,20 @@ namespace MVC.Controllers
         }
 
         // GET: Books/Edit/5
-        //public async Task<IActionResult> Edit(int id)
-        //{
-        //    var model = await _mediator.Send(new EditBookRequest(id));
-        //    if (model == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    // TODO: Add get related items service logic here to set ViewData if necessary
-        //    ViewData["AuthorId"] = new SelectList(new List<SelectListItem>(), "Value", "Text");
-        //    return View(model);
-        //}
+        public async Task<IActionResult> Edit(int id)
+        {
+            var model = await _mediator.Send(new EditBookRequest(id));
+            if (model == null)
+            {
+                return NotFound();
+            }
+            // TODO: Add get related items service logic here to set ViewData if necessary
+            var authorResponse = await _mediator.Send(new ReadAuthorMvcRequest());
+            ViewData["AuthorId"] = new SelectList(authorResponse.ToList(), "Id", "FullName");
+            var genreResponse = await _mediator.Send(new ReadGenreRequest());
+            ViewBag.Genres = new MultiSelectList(genreResponse.ToList(), "Id", "Name");
+            return View(model);
+        }
 
         // POST: Books/Edit
         // To protect from overposting attacks, enable the specific properties you want to bind to.

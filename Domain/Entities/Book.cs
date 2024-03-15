@@ -15,8 +15,8 @@ namespace Domain.Entities
         public bool IsTopSeller { get; set; }
 
         public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public Author? Author { get; set; }
 
-        public List<BookGenre> BookGenres { get; set; }
+        public List<BookGenre>? BookGenres { get; set; }
     }
 }

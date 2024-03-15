@@ -63,7 +63,7 @@
                     @:<label asp-for="@property.PropertyName" class="col-2 col-form-label"></label>
 				    @:<div class="col-6">
 					    @:<select asp-for="@property.PropertyName" class="form-select select2" asp-items="ViewBag.@property.PropertyName">
-						    @:<option value="0">-- Select --</option>
+						    @:<option value="">-- Select --</option>
 					    @:</select>
 					    @:<span asp-validation-for="@property.PropertyName" class="text-danger"></span>
 				    @:</div>
