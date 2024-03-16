@@ -6,33 +6,20 @@ using Domain.Common;
 using Domain.Entities.Bases;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
 
 namespace Application.Features.Books
 {
-    public record ReadBookMvcRequest : IRequest<IQueryable<ReadBookMvcResponse>>;
+	public record ReadBookMvcRequest : IRequest<IQueryable<ReadBookMvcResponse>>;
     public record ReadBookMvcResponse : IRecord
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        [DisplayName("ISBN")]
         public string? Isbn { get; set; }
-
-        [DisplayName("Number of Pages")]
         public short? NumberOfPages { get; set; }
-
-        [DisplayName("Publish Date")]
         public string? PublishDate { get; set; }
-
-        [DisplayName("Book Type")]
         public string BookType { get; set; }
-
         public string? Price { get; set; }
-
-        [DisplayName("Top Seller")]
         public string IsTopSeller { get; set; }
-
         public ReadAuthorMvcResponse Author { get; set; }
         public List<ReadGenreResponse> Genres { get; set; }
     }

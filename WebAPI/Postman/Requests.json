@@ -602,7 +602,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"123456789012\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"123456789012\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookTypes\": [\r\n        2,\r\n        4\r\n    ],\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -628,7 +628,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": -2,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": -2,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookTypes\": [\r\n        2,\r\n        4\r\n    ],\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -654,7 +654,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-14T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2034-03-14T00:00:00\",\r\n    \"bookTypes\": [\r\n        2,\r\n        4\r\n    ],\r\n    \"price\": 222.2,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -680,7 +680,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookType\": 2,\r\n    \"price\": 0,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
+					"raw": "{\r\n    \"name\" : \"test 2\",\r\n    \"isbn\": \"1234567890122\",\r\n    \"numberOfPages\": 22,\r\n    \"publishDate\": \"2024-03-12T00:00:00\",\r\n    \"bookTypes\": [\r\n        2,\r\n        4\r\n    ],\r\n    \"price\": 0,\r\n    \"isTopSeller\": false,\r\n    \"authorId\": 2,\r\n    \"genreIds\": [\r\n        2\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

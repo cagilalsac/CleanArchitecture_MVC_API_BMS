@@ -98,25 +98,30 @@ namespace MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var response = await _mediator.Send(request);
-                return RedirectToAction(nameof(Index));
+				var response = await _mediator.Send(request);
+				if (response.IsSuccessful)
+					return RedirectToAction(nameof(Details), new { id = response.Id });
+				ModelState.AddModelError("", response.Message);
             }
-            // TODO: Add get related items service logic here to set ViewData if necessary
-            ViewData["AuthorId"] = new SelectList(new List<SelectListItem>(), "Value", "Text");
-            return View(request);
+			// TODO: Add get related items service logic here to set ViewData if necessary
+			var authorResponse = await _mediator.Send(new ReadAuthorMvcRequest());
+			ViewData["AuthorId"] = new SelectList(authorResponse.ToList(), "Id", "FullName");
+			var genreResponse = await _mediator.Send(new ReadGenreRequest());
+			ViewBag.Genres = new MultiSelectList(genreResponse.ToList(), "Id", "Name");
+			return View(request);
         }
 
         // GET: Books/Delete/5
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    var response = await _mediator.Send(new ReadBookRequest());
-        //    var model = await response.SingleOrDefaultAsync(r => r.Id == id);
-        //    if (model == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(model);
-        //}
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _mediator.Send(new ReadBookMvcRequest());
+            var model = await response.SingleOrDefaultAsync(r => r.Id == id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return View(model);
+        }
 
         // POST: Books/Delete
         [HttpPost, ActionName("Delete")]

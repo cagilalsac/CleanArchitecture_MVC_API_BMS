@@ -3,21 +3,15 @@ using Application.Common.Handlers.Bases;
 using Domain.Entities.Bases;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
 
 namespace Application.Features.Authors
 {
-    public record ReadAuthorMvcRequest : IRequest<IQueryable<ReadAuthorMvcResponse>>;
+	public record ReadAuthorMvcRequest : IRequest<IQueryable<ReadAuthorMvcResponse>>;
     public record ReadAuthorMvcResponse : IRecord
     {
         public int Id { get; set; }
-
-        [DisplayName("Full Name")]
         public string FullName { get; set; }
-
-        [DisplayName("Books Count")]
         public string BooksCount { get; set; }
-
         public string Books { get; set; }
     }
 

@@ -9,12 +9,12 @@ using MediatR;
 
 namespace Application.Features.Books
 {
-    public record CreateBookApiRequest(string Name, string? Isbn, short? NumberOfPages, DateTime? PublishDate, 
+    public record CreateBookRequest(string Name, string? Isbn, short? NumberOfPages, DateTime? PublishDate, 
         List<int> BookTypes, decimal? Price, bool IsTopSeller, int? AuthorId, List<int> GenreIds) : IRequest<Response>;
 
-    public class CreateBookApiValidator : AbstractValidator<CreateBookApiRequest>
+    public class CreateBookValidator : AbstractValidator<CreateBookRequest>
     {
-        public CreateBookApiValidator()
+        public CreateBookValidator()
         {
             RuleFor(b => b.Name)
                 .NotNull().WithMessage("Name is required!")
@@ -23,7 +23,7 @@ namespace Application.Features.Books
             RuleFor(b => b.Isbn)
                 .Length(13).WithMessage("ISBN must be 13 characters!");
             RuleFor(b => b.NumberOfPages)
-				.GreaterThanOrEqualTo<CreateBookApiRequest, short>(0).WithMessage("Number Of Pages must be zero or positive!");
+				.GreaterThanOrEqualTo<CreateBookRequest, short>(0).WithMessage("Number Of Pages must be zero or positive!");
             RuleFor(b => b.PublishDate)
                 .LessThan(DateTime.Today.AddDays(1)).WithMessage("Publish Date must be before " + DateTime.Today.AddDays(1).ToString("MM.dd.yyyy"));
             RuleFor(b => b.BookTypes)
@@ -35,13 +35,13 @@ namespace Application.Features.Books
         }
     }
 
-    public class CreateBookApiHandler : HandlerBase, IRequestHandler<CreateBookApiRequest, Response>
+    public class CreateBookHandler : HandlerBase, IRequestHandler<CreateBookRequest, Response>
     {
-        public CreateBookApiHandler(IDb db) : base(db)
+        public CreateBookHandler(IDb db) : base(db)
         {
         }
 
-        public async Task<Response> Handle(CreateBookApiRequest request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(CreateBookRequest request, CancellationToken cancellationToken)
         {
             if (!string.IsNullOrWhiteSpace(request.Isbn) && _db.Books.Any(b => (b.Isbn ?? string.Empty).ToUpper() == (request.Isbn ?? string.Empty).ToUpper().Trim()))
                 return new ErrorResponse("Book with the same ISBN exists!");

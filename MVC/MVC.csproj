@@ -16,7 +16,6 @@
     <Content Remove="Templates\ViewGenerator\Empty.cshtml" />
     <Content Remove="Templates\ViewGenerator\List.cshtml" />
     <Content Remove="Templates\ViewGenerator\_ValidationScriptsPartial.cshtml" />
-    <Content Remove="Views\Books\Delete.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
