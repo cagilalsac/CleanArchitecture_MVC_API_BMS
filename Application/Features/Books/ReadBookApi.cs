@@ -10,9 +10,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Features.Books
 {
     public record ReadBookApiRequest : IRequest<IQueryable<ReadBookApiResponse>>;
-    public record ReadBookApiResponse : IResponse
+    public record ReadBookApiResponse : ResponseBase
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string? Isbn { get; set; }
         public short? NumberOfPages { get; set; }

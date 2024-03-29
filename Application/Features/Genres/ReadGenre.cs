@@ -6,9 +6,8 @@ using MediatR;
 namespace Application.Features.Genres
 {
     public record ReadGenreRequest : IRequest<IQueryable<ReadGenreResponse>>;
-    public record ReadGenreResponse : IResponse
+    public record ReadGenreResponse : ResponseBase
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 

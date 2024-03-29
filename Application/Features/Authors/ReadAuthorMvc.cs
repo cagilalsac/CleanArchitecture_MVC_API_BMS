@@ -7,9 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Features.Authors
 {
     public record ReadAuthorMvcRequest : IRequest<IQueryable<ReadAuthorMvcResponse>>;
-    public record ReadAuthorMvcResponse : IResponse
+    public record ReadAuthorMvcResponse : ResponseBase
     {
-        public int Id { get; set; }
         public string FullName { get; set; }
         public string BooksCount { get; set; }
         public string Books { get; set; }
