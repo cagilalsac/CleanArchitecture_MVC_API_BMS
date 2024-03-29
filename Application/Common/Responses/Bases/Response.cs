@@ -1,8 +1,6 @@
-﻿using Domain.Entities.Bases;
-
-namespace Application.Common.Responses.Bases
+﻿namespace Application.Common.Responses.Bases
 {
-    public abstract record Response : IRecord
+    public abstract record Response : IResponse
     {
         public int Id { get; set; }
         public bool IsSuccessful { get; }

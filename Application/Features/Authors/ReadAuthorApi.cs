@@ -1,13 +1,13 @@
 ﻿using Application.Common.Contexts.Bases;
 using Application.Common.Handlers.Bases;
-using Domain.Entities.Bases;
+using Application.Common.Responses.Bases;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Authors
 {
     public record ReadAuthorApiRequest : IRequest<IQueryable<ReadAuthorApiResponse>>;
-    public record ReadAuthorApiResponse : IRecord
+    public record ReadAuthorApiResponse : IResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }

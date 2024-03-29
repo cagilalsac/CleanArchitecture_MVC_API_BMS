@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities.Bases
 {
-    public interface IRecord
+    public abstract class Record
     {
         public int Id { get; set; }
     }

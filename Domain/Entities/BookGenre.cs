@@ -2,9 +2,8 @@
 
 namespace Domain.Entities
 {
-    public class BookGenre : IRecord
+    public class BookGenre : Record
     {
-        public int Id { get; set; }
         public int BookId { get; set; }
         public Book? Book { get; set; }
         public int GenreId { get; set; }
