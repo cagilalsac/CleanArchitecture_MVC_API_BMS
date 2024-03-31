@@ -3,16 +3,15 @@ using Application.Common.Handlers.Bases;
 using Application.Features.Authors;
 using Application.Features.Genres;
 using Domain.Common;
-using Domain.Entities.Bases;
+using Domain.Common.Records.Bases;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books
 {
-    public record ReadBookApiRequest : IRequest<IQueryable<ReadBookApiResponse>>;
-    public record ReadBookApiResponse : IRecord
+    public record ReadBookApiRequest : Record, IRequest<IQueryable<ReadBookApiResponse>>;
+    public record ReadBookApiResponse : Record
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string? Isbn { get; set; }
         public short? NumberOfPages { get; set; }

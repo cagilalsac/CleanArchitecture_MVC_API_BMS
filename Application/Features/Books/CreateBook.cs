@@ -3,14 +3,25 @@ using Application.Common.Handlers.Bases;
 using Application.Common.Responses;
 using Application.Common.Responses.Bases;
 using Domain.Common;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
 
 namespace Application.Features.Books
 {
-    public record CreateBookRequest(string Name, string? Isbn, short? NumberOfPages, DateTime? PublishDate, 
-        List<int> BookTypes, decimal? Price, bool IsTopSeller, int? AuthorId, List<int> GenreIds) : IRequest<Response>;
+    public record CreateBookRequest : Record, IRequest<Response>
+    {
+        public string Name { get; set; }
+        public string? Isbn { get; set; }
+        public short? NumberOfPages { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public List<int> BookTypes { get; set; }
+        public decimal? Price { get; set; }
+        public bool IsTopSeller { get; set; }
+        public int? AuthorId { get; set; }
+        public List<int> GenreIds { get; set; }
+    }
 
     public class CreateBookValidator : AbstractValidator<CreateBookRequest>
     {
@@ -23,7 +34,7 @@ namespace Application.Features.Books
             RuleFor(b => b.Isbn)
                 .Length(13).WithMessage("ISBN must be 13 characters!");
             RuleFor(b => b.NumberOfPages)
-				.GreaterThanOrEqualTo<CreateBookRequest, short>(0).WithMessage("Number Of Pages must be zero or positive!");
+                .GreaterThanOrEqualTo<CreateBookRequest, short>(0).WithMessage("Number Of Pages must be zero or positive!");
             RuleFor(b => b.PublishDate)
                 .LessThan(DateTime.Today.AddDays(1)).WithMessage("Publish Date must be before " + DateTime.Today.AddDays(1).ToString("MM.dd.yyyy"));
             RuleFor(b => b.BookTypes)

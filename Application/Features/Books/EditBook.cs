@@ -1,13 +1,14 @@
 ﻿using Application.Common.Contexts.Bases;
 using Application.Common.Handlers.Bases;
 using Domain.Common;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books
 {
-    public record EditBookRequest(int Id) : IRequest<UpdateBookRequest>;
+    public record EditBookRequest : Record, IRequest<UpdateBookRequest>;
 
     public class EditBookHandler : HandlerBase, IRequestHandler<EditBookRequest, UpdateBookRequest>
     {
@@ -28,8 +29,19 @@ namespace Application.Features.Books
             if (entity.BookType.HasFlag(BookTypesEnum.Audio))
                 bookTypes.Add((int)BookTypesEnum.Audio);
             List<int> genreIds = entity.BookGenres?.Select(bg => bg.GenreId).ToList();
-            return new UpdateBookRequest(entity.Id, entity.Name, entity.Isbn, entity.NumberOfPages, entity.PublishDate,
-                bookTypes, entity.Price, entity.IsTopSeller, entity.AuthorId, genreIds);
+            return new UpdateBookRequest()
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Isbn = entity.Isbn,
+                NumberOfPages = entity.NumberOfPages,
+                PublishDate = entity.PublishDate,
+                BookTypes = bookTypes,
+                Price = entity.Price,
+                IsTopSeller = entity.IsTopSeller,
+                AuthorId = entity.AuthorId,
+                GenreIds = genreIds
+            };
         }
     }
 }

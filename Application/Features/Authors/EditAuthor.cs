@@ -1,11 +1,12 @@
 ﻿using Application.Common.Contexts.Bases;
 using Application.Common.Handlers.Bases;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Authors
 {
-    public record EditAuthorRequest(int Id) : IRequest<UpdateAuthorRequest>;
+    public record EditAuthorRequest : Record, IRequest<UpdateAuthorRequest>;
 
     public class EditAuthorHandler : HandlerBase, IRequestHandler<EditAuthorRequest, UpdateAuthorRequest>
     {
@@ -18,7 +19,7 @@ namespace Application.Features.Authors
             Author entity = await _db.Authors.FindAsync(request.Id);
             if (entity is null)
                 return null;
-            return new UpdateAuthorRequest(entity.Id, entity.Name, entity.Surname);
+            return new UpdateAuthorRequest() { Id = entity.Id, Name = entity.Name, Surname = entity.Surname };
         }
     }
 }

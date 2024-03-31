@@ -1,15 +1,15 @@
 ﻿using Application.Common.Contexts.Bases;
 using Application.Common.Handlers.Bases;
-using Domain.Entities.Bases;
+using Domain.Common.Records.Bases;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Authors
 {
-    public record ReadAuthorMvcRequest : IRequest<IQueryable<ReadAuthorMvcResponse>>;
-    public record ReadAuthorMvcResponse : IRecord
+    public record ReadAuthorMvcRequest : Record, IRequest<IQueryable<ReadAuthorMvcResponse>>;
+
+    public record ReadAuthorMvcResponse : Record
     {
-        public int Id { get; set; }
         public string FullName { get; set; }
         public string BooksCount { get; set; }
         public string Books { get; set; }

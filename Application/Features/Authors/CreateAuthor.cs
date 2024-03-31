@@ -2,13 +2,18 @@
 using Application.Common.Handlers.Bases;
 using Application.Common.Responses;
 using Application.Common.Responses.Bases;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
 
 namespace Application.Features.Authors
 {
-    public record CreateAuthorRequest(string Name, string Surname) : IRequest<Response>;
+    public record CreateAuthorRequest : Record, IRequest<Response>
+    {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+    }
 
     public class CreateAuthorValidator : AbstractValidator<CreateAuthorRequest>
     {

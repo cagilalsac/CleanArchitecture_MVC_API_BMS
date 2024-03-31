@@ -2,13 +2,17 @@
 using Application.Common.Handlers.Bases;
 using Application.Common.Responses;
 using Application.Common.Responses.Bases;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
 
 namespace Application.Features.Genres
 {
-    public record UpdateGenreRequest(int Id, string Name) : IRequest<Response>;
+    public record UpdateGenreRequest : Record, IRequest<Response>
+    {
+        public string Name { get; set; }
+    }
 
     public class UpdateGenreValidator : AbstractValidator<UpdateGenreRequest>
     {

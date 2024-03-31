@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Bases
+﻿namespace Domain.Common.Records.Bases
 {
     public interface IRecord
     {

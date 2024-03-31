@@ -2,13 +2,14 @@
 using Application.Common.Handlers.Bases;
 using Application.Common.Responses;
 using Application.Common.Responses.Bases;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Authors
 {
-    public record DeleteAuthorRequest(int Id) : IRequest<Response>;
+    public record DeleteAuthorRequest : Record, IRequest<Response>;
 
     public class DeleteAuthorHandler : HandlerBase, IRequestHandler<DeleteAuthorRequest, Response>
     {

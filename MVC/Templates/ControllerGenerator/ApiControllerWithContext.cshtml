@@ -84,7 +84,7 @@ namespace @Model.ControllerNamespace
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(@primaryKeyShortTypeName id)
         {
-            var response = await _mediator.Send(new @(deleteRequestType + "(id)"));
+            var response = await _mediator.Send(new @(deleteRequestType + "() { Id = id }"));
             return Ok(response);
         }
 	}

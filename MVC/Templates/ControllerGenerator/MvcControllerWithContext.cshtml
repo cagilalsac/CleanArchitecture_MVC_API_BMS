@@ -140,7 +140,7 @@ namespace @Model.ControllerNamespace
         // GET: @routePrefix/Edit/5
         public async Task<IActionResult> Edit(@primaryKeyShortTypeName id)
         {
-            var model = await _mediator.Send(new @(editRequestType + "(id)"));
+            var model = await _mediator.Send(new @(editRequestType + "() { Id = id }"));
             if (model == null)
             {
                 return NotFound();
@@ -196,7 +196,7 @@ namespace @Model.ControllerNamespace
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(@primaryKeyShortTypeName id)
         {
-            var response = await _mediator.Send(new @(deleteRequestType + "(id)"));
+            var response = await _mediator.Send(new @(deleteRequestType + "() { Id = id }"));
             return RedirectToAction(nameof(Index));
         }
 	}

@@ -1,11 +1,12 @@
 ﻿using Application.Common.Contexts.Bases;
 using Application.Common.Handlers.Bases;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Genres
 {
-    public record EditGenreRequest(int Id) : IRequest<UpdateGenreRequest>;
+    public record EditGenreRequest : Record, IRequest<UpdateGenreRequest>;
 
     public class EditGenreHandler : HandlerBase, IRequestHandler<EditGenreRequest, UpdateGenreRequest>
     {
@@ -18,7 +19,7 @@ namespace Application.Features.Genres
             Genre entity = await _db.Genres.FindAsync(request.Id);
             if (entity is null)
                 return null;
-            return new UpdateGenreRequest(entity.Id, entity.Name);
+            return new UpdateGenreRequest() { Id = entity.Id, Name = entity.Name };
         }
     }
 }

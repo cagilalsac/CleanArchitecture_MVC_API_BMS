@@ -76,7 +76,7 @@ namespace MVC.Controllers
         // GET: Books/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var model = await _mediator.Send(new EditBookRequest(id));
+            var model = await _mediator.Send(new EditBookRequest() { Id = id });
             if (model == null)
             {
                 return NotFound();
@@ -128,7 +128,7 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var response = await _mediator.Send(new DeleteBookRequest(id));
+            var response = await _mediator.Send(new DeleteBookRequest() { Id = id });
             return RedirectToAction(nameof(Index));
         }
 	}

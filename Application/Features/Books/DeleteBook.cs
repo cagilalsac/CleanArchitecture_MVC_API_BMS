@@ -2,13 +2,15 @@
 using Application.Common.Handlers.Bases;
 using Application.Common.Responses;
 using Application.Common.Responses.Bases;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books
 {
-    public record DeleteBookRequest(int Id) : IRequest<Response>;
+    public record DeleteBookRequest : Record, IRequest<Response>;
+    
 
     public class DeleteBookHandler : HandlerBase, IRequestHandler<DeleteBookRequest, Response>
     {

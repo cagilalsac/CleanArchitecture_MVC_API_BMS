@@ -66,7 +66,7 @@ namespace MVC.Controllers
         // GET: Authors/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var model = await _mediator.Send(new EditAuthorRequest(id));
+            var model = await _mediator.Send(new EditAuthorRequest() { Id = id });
             if (model == null)
             {
                 return NotFound();
@@ -110,7 +110,7 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var response = await _mediator.Send(new DeleteAuthorRequest(id));
+            var response = await _mediator.Send(new DeleteAuthorRequest() { Id = id });
             TempData["Message"] = response.Message;
             return RedirectToAction(nameof(Index));
         }

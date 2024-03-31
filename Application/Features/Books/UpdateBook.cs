@@ -3,6 +3,7 @@ using Application.Common.Handlers.Bases;
 using Application.Common.Responses;
 using Application.Common.Responses.Bases;
 using Domain.Common;
+using Domain.Common.Records.Bases;
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
@@ -10,8 +11,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Books
 {
-    public record UpdateBookRequest(int Id, string Name, string? Isbn, short? NumberOfPages, DateTime? PublishDate, 
-        List<int> BookTypes, decimal? Price, bool IsTopSeller, int? AuthorId, List<int> GenreIds) : IRequest<Response>;
+    public record UpdateBookRequest : Record, IRequest<Response>
+    {
+        public string Name { get; set; }
+        public string? Isbn { get; set; }
+        public short? NumberOfPages { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public List<int> BookTypes { get; set; }
+        public decimal? Price { get; set; }
+        public bool IsTopSeller { get; set; }
+        public int? AuthorId { get; set; }
+        public List<int> GenreIds { get; set; }
+    }
 
     public class UpdateBookValidator : AbstractValidator<UpdateBookRequest>
     {

@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            Response response = await _mediator.Send(new DeleteBookRequest(id));
+            Response response = await _mediator.Send(new DeleteBookRequest() { Id = id });
             return Ok(response);
         }
 	}
