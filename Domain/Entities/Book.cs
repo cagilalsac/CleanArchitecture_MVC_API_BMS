@@ -3,8 +3,9 @@ using Domain.Entities.Bases;
 
 namespace Domain.Entities
 {
-    public class Book : Record
+    public class Book : IRecord
     {
+        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string? Isbn { get; set; }
         public short? NumberOfPages { get; set; }

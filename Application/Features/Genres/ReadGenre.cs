@@ -1,13 +1,14 @@
 ﻿using Application.Common.Contexts.Bases;
 using Application.Common.Handlers.Bases;
-using Application.Common.Responses.Bases;
+using Domain.Entities.Bases;
 using MediatR;
 
 namespace Application.Features.Genres
 {
     public record ReadGenreRequest : IRequest<IQueryable<ReadGenreResponse>>;
-    public record ReadGenreResponse : ResponseBase
+    public record ReadGenreResponse : IRecord
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 
