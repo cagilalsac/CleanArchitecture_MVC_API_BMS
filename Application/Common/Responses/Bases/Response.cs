@@ -1,6 +1,8 @@
-﻿namespace Application.Common.Responses.Bases
+﻿using Domain.Entities.Bases;
+
+namespace Application.Common.Responses.Bases
 {
-    public record Response 
+    public record Response : IRecord
     {
         public bool IsSuccessful { get; }
         public string Message { get; }
