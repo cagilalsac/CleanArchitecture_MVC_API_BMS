@@ -1,4 +1,4 @@
-﻿namespace Domain.Common
+﻿namespace Domain.Enums
 {
     [Flags]
     public enum BookTypesEnum

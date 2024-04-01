@@ -1,9 +1,9 @@
-﻿using Application.Common.Contexts.Bases;
+﻿using Application.Contexts.Bases;
 using Application.Common.Handlers.Bases;
 using Application.Features.Authors;
 using Application.Features.Genres;
-using Domain.Common;
 using Domain.Common.Records.Bases;
+using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

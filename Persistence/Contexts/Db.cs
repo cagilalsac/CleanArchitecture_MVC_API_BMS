@@ -1,4 +1,4 @@
-﻿using Application.Common.Contexts.Bases;
+﻿using Application.Contexts.Bases;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 

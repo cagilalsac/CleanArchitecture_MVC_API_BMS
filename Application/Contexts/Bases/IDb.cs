@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Common.Contexts.Bases
+namespace Application.Contexts.Bases
 {
     public interface IDb
     {

@@ -1,6 +1,6 @@
 ﻿using Domain.Common.Records.Bases;
 
-namespace Domain.Entities.Bases
+namespace Domain.Common.Entities.Bases
 {
     public abstract class Entity : IRecord
     {

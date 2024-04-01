@@ -1,4 +1,4 @@
-﻿using Application.Common.Contexts.Bases;
+﻿using Application.Contexts.Bases;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

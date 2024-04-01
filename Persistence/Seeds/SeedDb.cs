@@ -1,12 +1,12 @@
-﻿using Domain.Common;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using System.Globalization;
 
 namespace Persistence.Seeds
 {
-	public class SeedDb
+    public class SeedDb
     {
         public void Initialize()
         {

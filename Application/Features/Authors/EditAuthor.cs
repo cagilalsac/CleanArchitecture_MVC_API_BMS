@@ -1,4 +1,4 @@
-﻿using Application.Common.Contexts.Bases;
+﻿using Application.Contexts.Bases;
 using Application.Common.Handlers.Bases;
 using Domain.Common.Records.Bases;
 using Domain.Entities;

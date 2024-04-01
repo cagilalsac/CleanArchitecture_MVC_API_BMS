@@ -1,4 +1,4 @@
-﻿using Application.Common.Contexts.Bases;
+﻿using Application.Contexts.Bases;
 
 namespace Application.Common.Handlers.Bases
 {
